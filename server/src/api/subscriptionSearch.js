@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { generateSQLFromPrompt } = require('../services/geminiService');
-const { runSQLWithPagination, runSQL } = require('../services/sqlService');
-
+const { runQuery } = require('../services/postgresService');
 router.post('/search', async (req, res) => {
     const {
         prompt,
@@ -16,7 +15,7 @@ router.post('/search', async (req, res) => {
         const { sql, explanation } = await generateSQLFromPrompt(prompt, mandatoryFields);
 
         if (execute) {
-            const { data, total } = await runSQL(sql, pageNumber, pageSize);
+            const { data, total } = await runQuery(sql);
 
             res.json({
                 sql,

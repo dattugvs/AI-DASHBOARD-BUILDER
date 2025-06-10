@@ -1,0 +1,9 @@
+﻿CancelReasonID,Name
+1,Not Paid
+2,No Card
+3,Fraud Review Failed
+4,Non Compliant EU Customer
+5,Tax Calculation Failed
+6,Currency incompatible with Gateway
+7,Non Compliant Customer
+8,Cancelled due to source subscription terminated

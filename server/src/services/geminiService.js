@@ -5,7 +5,7 @@ const axios = require('axios');
 async function generateSQLFromPrompt(prompt, mandatoryFields = []) {
 
   const preparePrompt = (context, userPrompt, fields = []) => {
-    const basePrompt = `You are a SQL expert. Use the following schema and rules to generate an SQL query.\n\n${context}`;
+    const basePrompt = `You are a PostgreSQL expert. Use the following schema and rules to generate an SQL query.\n\n${context}`;
     const userPromptText = `User Prompt: ${userPrompt}`;
     const mandatoryFieldsText = mandatoryFields?.length > 0 ? `Make sure to select these fields in the result: ${fields.join(', ')}` : '';
     const resultText = `Respond with:\nSQL: <sql_query>\nExplanation: <why this query>`;

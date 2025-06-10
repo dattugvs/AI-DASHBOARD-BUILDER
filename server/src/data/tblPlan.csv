@@ -1,0 +1,221 @@
+﻿PlanID,Name
+4,24 AP - Southeast Display
+5,GroupTestPlan
+6,CB Group Check
+7,CBMO - Flat Rate Card
+8,cbmo-rr
+9,image@T
+10,group6
+11,Datta - Flat RC + Classified
+12,image@TT
+13,T@ Billing Cycle
+14,SP Print Quantity with BR-FC 10
+15,Kyle print w/o quantity
+16,Datta - 1 BC AP ON PI ON
+17,Datta - 1 BC AP ON PI OFF
+18,Datta - 1 BC AP OFF PI OFF
+19,Copy Of CB Group Check
+20,Kyle print flat fee
+21,Datta - 2 BC AP ON PI ON
+22,Datta - UntilCancelled - AP ON PI ON
+23,SP Flat Rate Card
+24,Kyle quantity with CI
+25,SP CPM Plan
+26,SP Quantity W/O BR
+27,SP Expire with 1BC
+28,SP Digital Flat Plan
+31,SP CPM WI & DR
+32,SP without classified
+33,Image@Billing cycle 1
+34,"SP PS 1month "
+35,Image@Billing cycle until cancelled
+36,CB test
+37,Test Plan
+38,Test Plan CB
+39,AB-1 BC AP OFF PI OFF
+40,AB- 1 BC AP ON PI OFF
+41,addons
+42,AB- 2 BC AP ON PI ON
+43,AB- UntilCancelled - AP ON PI ON
+44,The Test Plan
+45,Datta - 12 BC 1 Month Expire
+46,Copy Of Kyle print flat fee_test
+47,Copy Of Kyle print flat fee_test2
+48,Copy Of Kyle print flat fee_test3
+49,Copy Of Kyle print flat fee_test4
+50,Copy Of Kyle print flat fee_testtest
+51,Copy Of Kyle print flat fee_test5
+52,Test Copy
+53,image@comp
+54,Kyle_Stairstep
+55,Kyle_Perunit
+56,azx@tst
+57,BI-1M-BC-1-EA-EX-PM-V
+58,test@123
+59,image@Requestor
+60,Kyle_Stairstep_1D 1B
+61,image@Comp 0
+62,Kyle_Tiered
+63,Kyle_Flat Fee
+64,New Comp plan
+65,New Comp plan-5
+66,Kyle Max quantity Addon
+67,new comp-6
+68,new comp-897
+70,Amit-comp-5
+71,avinash-comp-pan0hhh
+72,avi-new-comp-489
+74,BI-1M-BT-1-EA-EX-PM-FF
+75,comp plan-5
+76,Avinash-new-comp-plan090
+77,Demo Plan-Comp-5
+78,comp-rate
+79,Test-Comp-Plan-1
+80,Test-Comp-Plan-45
+81,Shelby Comp
+82,Kyle_Comp_Plan
+83,Copy Of Shelby Comp
+84,Copy Of Shelby Comp2
+85,Copy Of AB- 1 BC AP ON PI OFF
+86,Kyle_Comp_Plan 2
+87,Kyle_Comp
+88,Copy Of AB- 1 BC AP ON PI OFF Test A
+89,Copy Of AB- 1 BC AP ON PI OFF Test B
+90,Copy Of Kyle_Comp_Plan
+91,Kyle req comp
+92,Copy Of Kyle req comp
+93,Calendar Billing Day Based  - Per Unit
+94,TestAnnex
+95,TP News 1 year
+96,Tech Billing Test Plan
+97,AM Plan 1
+98,AM Plan 2
+99,A plan test
+100,CBMO Plan
+101,AB-Plan-17-02-2025
+102,T@print Tax
+103,Without Rate Card
+104,T@ Decimal
+105,BI-1W-BC-1-EA-EX
+106,Plan 10.00
+107,Plan 10.10
+108,Plan 10.11
+109,Plan 10.14
+110,Plan 10.15
+111,Plan 10.19
+112,Plan 10.16
+113,Plan 00.00
+114,***HV Prod Plan
+115,***HV Plan1
+116,Bijji_Gift Plan
+117,Test-Tiered Flat Rate
+118,34 AP-Southeast Display
+119,Forbes Weekly Plan
+120,SP Tiered Flat 2025
+121,SP Tiered Flat without Text & Images
+122,Datta - Copies
+123,SP Tiered Flat Rate w/o Quantity
+124,SPR Plan
+125,Batch Comp Plan test
+126,Datta Copies 2
+127,T@Annex
+128,Tayyab Copies
+129,Copy Of Tayyab Copies
+130,Copy Of T@Annex
+131,Total Available @ T
+132,T@Annex Part 2
+133,Copy Of Test Plan_testAM
+134,datta
+135,datta test
+136,AB-Plan-Max Copies (10)-24-02-2025
+137,Tina Plan
+138,Per unit datta
+139,Tina plan 2
+140,perUnitplan
+141,withoutAddons
+144,Single User Licence
+145,Plan Z
+146,Copy Of Kyle_Flat Fee
+147,T@Trial On and Of
+148,T@Trial On and Of expire
+149,Template Plan - Basic Print
+150,Template Plan - Digital Plus
+151,Template Plan - Print & Digital Bundle
+152,T@Week
+153,SP PS AP on PI off
+154,SP PS AP on PI ON
+156,Metered-BT-1M-BC-1-EA-EX-AP-OFF-PI-OFF
+157,Plan_With_Feature
+158,Metered Billing KT
+159,Metered Billing Demo
+160,Bela_M_P U_A
+161,Bela-M-Volu-M-Sum
+162,SP Metered Billing
+163,Metered Billing - Renew Once-Sum of Usage
+164,Trial Bela-M-Tiered-M-Sum
+165,Bela-M-Stairstep-M-Last
+166,Metered Billing Demo 2 _ Max of Usage
+167,AB@Metered Billing - Per Unit
+168,Comp Plan Copy
+169,Copy Of Metered Billing KT
+170,Copy Of Metered Billing - Renew Once-Sum of Usage
+171,Copy Of Metered Billing Demo 2 _ Max of Usage
+172,Datta - Forever 1Week
+173,Kyle_Decimal_Expire
+174,Kyle_Deci_Volume
+175,Copy Of Kyle_Tiered
+177,Test Cp Settings
+178,Kyle_Dec_tiered
+179,Kyle_Dec_Stairstep
+180,KylE_Volume_Deci
+181,KylE_Volume_Deci 2
+182,ttt
+183,JRC Renew Expired Plan
+184,Kyle_Per Max
+187,Jess Coupon Plan
+188,"Jess CP End Action "
+189,T@ Customer Portal
+190,Cp-Setting-check
+191,Copy Of Cp-Setting-check
+192,Test Max Quantity
+193,SP RO EAU
+194,SP Trail EAU
+195,Pavan Plan
+196,Copy Of Pavan Plan
+197,Xio_Coupon
+198,Copy Of Xio_Coupon
+199,Datta - Billing Cycle Start - Weekly
+200,Datta - Billing Cycle Start - Weekly 2
+201,Datta - Billing Cycle Start - Weekly + Trial 2
+202,image@T Addon
+203,image@T Addon 2
+204,Kyle_Monthly
+205,T@New Plan
+206,Kyle_Yearly
+207,New images @ A
+208,SP Transaction Report Plan
+209,Shelby Transaction Report Plan
+213,Credit Type KT
+214,"T@Billing Cycle Tuesday "
+215,T@ Billing Cycle Wednesday
+216,@Xio_Volume-T
+217,T@ Billing Cycle close by Wednesday
+218,coupon-perunit
+219,AB- 1 Day BC AP ON PI OFF
+220,@Xio_Volume Addon
+221,Copy Of coupon-perunit
+222,Copy Of Credit Type KT
+223,SP Gift Plan
+224,Abhi Gift Plan
+225,@Xio_Tiered
+226,T@ Billing Cycle friday
+227,T@ Billing Cycle thursday
+228,SP Renew Plan
+229,SP Renew Plan 1
+230,Tina KT Plan
+231,@Xio_Stairstep
+232,@Xio_Per unit
+233,plan with credit
+234,Renew Once Billing with Free Credits
+235,Basic Demo
+236,Per unit with credit

@@ -1,8 +1,8 @@
 # DATABASE TYPE
-Use only SQL Server syntax (e.g., GETDATE(), DATEADD(), etc.). Do NOT use SQLite syntax.
+Use only PostgreSQL syntax. Append quotes for the table name & columns: "<table_Name>" & <tableAlias>."columnName"
 
 # SCHEMA
-Table: gsCustomers(gsCustomersID, CompanyName, FirstName, MiddleName, LastName, Email, Street, Street2, City, State, ZipCode, County, Country)
+Table: gsCustomers(gsCustomersID, CompanyName, FirstName, MiddleName, LastName, Email, Street, Street2, City, State, Zipcode, County, International)
 Table: tblPlan(PlanID, Name)
 Table: tblPlanSubscription(SubscriptionId, Number, PlanID, CustomerID, Status, StartDate, NextBillingAt, RenewalDate, EndDate, IsAutoCollection, CreatedOn, EndAction)
 Table: tblPlanSubscriptionBillingTerm(ID, SubscriptionId, BillingStartDate, BillingEndDate, Status, PaymentGatewayStatus, Amount)
@@ -12,8 +12,8 @@ Table: tblPlanSubscriptionGift(SubscriptionID, IsGifted, GiftedBy)
 
 # BUSINESS RULES
 - Subscription Status can be: Future, InTrial, Active, NonRenew, Expired, Cancelled.
-- IsAutoCollection = 1 means automatic/card payments; otherwise manual (e.g., cash/cheque).
-- EndAction defines renewal behavior: Auto Renew, Renew Once, Expire, Until Cancelled.
+- IsAutoCollection = true means automatic/card payments; otherwise manual (e.g., cash/cheque).
+- EndAction defines renewal behavior: Renew Once(1), Auto Renew (2), Expire (3), Until Cancelled (4).
 - Cancellation is valid only if tblPlanSubscriptionCancel.Status is 'Initiated' or 'Cancelled'.
 
 # CANCELLATION RULES
@@ -31,12 +31,12 @@ When cancellation details are requested or relevant:
 
 # PAYMENT FAILURE
 - A subscription has failed payment if:
-  IsAutoCollection = 1 AND BillingTerm.Amount > 0 AND BillingTerm.PaymentGatewayStatus <> 'Success'.
+  IsAutoCollection = true AND BillingTerm.Amount > 0 AND BillingTerm.PaymentGatewayStatus <> 'Success'.
 - System retries the payment for 2-3 days.
 - If still failed, subscription is cancel-initiated by workflow (tblPlanSubscriptionCancel.Source LIKE 'ESWF%').
 
 # GIFTING RULES
-- If tblPlanSubscriptionGift.IsGifted = 1, the subscription was purchased as a gift.
+- If tblPlanSubscriptionGift.IsGifted = true, the subscription was purchased as a gift.
 - Gifter's ID is in tblPlanSubscriptionGift.GiftedBy → maps to gsCustomers.gsCustomersID.
 - When gift-related info is requested, return: Gifter ID, Gifter Full Name (FirstName + MiddleName + LastName), Email, Address.
 
