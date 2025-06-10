@@ -40,18 +40,19 @@ When cancellation details are requested or relevant:
 
 # AMOUNT & REVENUE RELATED
 - Subscription Total Term Amount: The full payable sum for a subscription's entire duration.
-- Each billing cycle has a specific amount, payable in single or multiple installments.
-- Payments are tied to specific billing terms; details are in tblPlanSubscriptionBillingTermPayment.
-- Revenue is calculated from the TotalTermAmount and BillingTerm Amounts, not directly from paid amounts or total amounts due across all subscriptions.
-- Amount Due and Open Invoices relate only to the current billing cycle.
-- Revenue reflects total expected payment, expected amount received (billing term amount), and any pending balance (total expected minus total paid).
-- Payments are recorded as installments (rows) in tblPlanSubscriptionBillingTermPayment, linked by SubscriptionID + BillingTermID.
+- Each billing cycle will have specific amount. The same amount can be paid in single or multiple payments installments based.
+- Each payment will be specific to the billing term and the details will be referenced to the tblPlanSubscriptionBillingTermPayment table.
+- DEFAULT AMOUNT INTERPRETATION: If a query mentions "amount" without further specification (e.g., "subscriptions with amount > 50"), it refers to the **Billing Term Amount** (from tblPlanSubscriptionBillingTerm.Amount).
+- REVENUE CALCULATION BASIS: Revenue calculations should be based upon the **Subscription Total Term Amount** and **Billing Term Amounts**, not directly related to how much is paid or amount due of all subscriptions.
+- Amount due, open invoice are related to current billing cycle specific.
+- Revenue is related to total expected payment and how much of expected amount received (billing term amount) and pending (probably the difference of total and paid).
+- Paid using one or more installments (rows) in tblPlanSubscriptionBillingTermPayment. Reference by SubscriptionID + BillingTermID.
 
 # PAYMENT AND REVENUE
 - Subscription Total Term Amount: Total amount due for a subscription's entire period.
 - Billing cycles have specific amounts, which can be paid in multiple installments.
 - Payments are specific to billing terms, detailed in tblPlanSubscriptionBillingTermPayment.
-- Revenue derives from Total Term Amount and Billing Term Amounts, not from actual paid/due amounts of all subscriptions.
+- REVENUE CALCULATION BASIS: Revenue derives from **Total Term Amount** and **Billing Term Amounts**, not from actual paid/due amounts of all subscriptions.
 - Amount Due and Open Invoices apply only to the current billing cycle.
 - Revenue represents total expected payment, expected amount received per billing term, and the outstanding difference (expected minus paid).
 - While handling search / aggregations, handle null checks & values properly with conditions on the columns whenever required.
@@ -72,7 +73,8 @@ Always include the following common fields in all search and aggregation results
 - Subscription ID, Subscription Number, Subscription Status
 - Customer ID, Customer Name (FirstName + MiddleName + LastName)
 - Plan ID, Plan Name, IsGifted
-
+For amount & revenue related queries, include fields in the results that are used in the calculations.
+If specific fields are mentioned to be fetched, make sure that along with them, include the common fields that are mandatory.
 # DATE FIELDS FORMATTING AND RULES
 - When the prompt includes time-based grouping (e.g., "month-wise", "year-wise") but does not specify a particular date column, assume grouping is based on StartDate.
 - For monthly data, display month names (e.g., "January", "February") instead of numeric values like "1" or "2".
