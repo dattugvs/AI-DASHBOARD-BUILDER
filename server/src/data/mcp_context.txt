@@ -4,11 +4,20 @@ Use only PostgreSQL syntax. Append quotes for the table name & columns: "<table_
 # SCHEMA
 Table: gsCustomers(gsCustomersID, CompanyName, FirstName, MiddleName, LastName, Email, Street, Street2, City, State, Zipcode, County, International)
 Table: tblPlan(PlanID, Name)
-Table: tblPlanSubscription(SubscriptionId, Number, PlanID, CustomerID, Status, StartDate, NextBillingAt, RenewalDate, EndDate, IsAutoCollection, CreatedOn, EndAction)
+Table: tblPlanSubscription(SubscriptionId, Number, PlanID, CustomerID, Status, StartDate, NextBillingAt, RenewalDate, EndDate, IsAutoCollection, CreatedOn, EndAction, TotalTermAmount)
 Table: tblPlanSubscriptionBillingTerm(ID, SubscriptionId, BillingStartDate, BillingEndDate, Status, PaymentGatewayStatus, Amount)
 Table: tblPlanSubscriptionCancel(ID, SubscriptionId, ToBeCancelled, CancelledDate, Source, Status, ReasonID)
-Table: tblPlanSubscriptionCancelreason(CancelReasonID, Name)
+Table: tblPlanSubscriptionCancelReason(CancelReasonID, Name)
 Table: tblPlanSubscriptionGift(SubscriptionID, IsGifted, GiftedBy)
+Table: tblPlanSubscriptionBillingTermPayment(SubscriptionID, BillingTermID, PaymentID, Amount)
+
+# RELATIONSHIPS
+- tblPlanSubscription.CustomerID → gsCustomers.gsCustomersID
+- tblPlanSubscription.PlanID → tblPlan.PlanID
+- tblPlanSubscriptionCancel.SubscriptionId → tblPlanSubscription.SubscriptionId
+- tblPlanSubscriptionGift.SubscriptionID → tblPlanSubscription.SubscriptionId
+- tblPlanSubscriptionGift.GiftedBy → gsCustomers.gsCustomersID
+
 
 # BUSINESS RULES
 - Subscription Status can be: Future, InTrial, Active, NonRenew, Expired, Cancelled.
@@ -29,6 +38,24 @@ When cancellation details are requested or relevant:
 - BillingTerm tracks: Amount, Status, PaymentGatewayStatus.
 - A billing term represents a single subscription period.
 
+# AMOUNT & REVENUE RELATED
+- Subscription Total Term Amount: The full payable sum for a subscription's entire duration.
+- Each billing cycle has a specific amount, payable in single or multiple installments.
+- Payments are tied to specific billing terms; details are in tblPlanSubscriptionBillingTermPayment.
+- Revenue is calculated from the TotalTermAmount and BillingTerm Amounts, not directly from paid amounts or total amounts due across all subscriptions.
+- Amount Due and Open Invoices relate only to the current billing cycle.
+- Revenue reflects total expected payment, expected amount received (billing term amount), and any pending balance (total expected minus total paid).
+- Payments are recorded as installments (rows) in tblPlanSubscriptionBillingTermPayment, linked by SubscriptionID + BillingTermID.
+
+# PAYMENT AND REVENUE
+- Subscription Total Term Amount: Total amount due for a subscription's entire period.
+- Billing cycles have specific amounts, which can be paid in multiple installments.
+- Payments are specific to billing terms, detailed in tblPlanSubscriptionBillingTermPayment.
+- Revenue derives from Total Term Amount and Billing Term Amounts, not from actual paid/due amounts of all subscriptions.
+- Amount Due and Open Invoices apply only to the current billing cycle.
+- Revenue represents total expected payment, expected amount received per billing term, and the outstanding difference (expected minus paid).
+- While handling search / aggregations, handle null checks & values properly with conditions on the columns whenever required.
+
 # PAYMENT FAILURE
 - A subscription has failed payment if:
   IsAutoCollection = true AND BillingTerm.Amount > 0 AND BillingTerm.PaymentGatewayStatus <> 'Success'.
@@ -40,15 +67,16 @@ When cancellation details are requested or relevant:
 - Gifter's ID is in tblPlanSubscriptionGift.GiftedBy → maps to gsCustomers.gsCustomersID.
 - When gift-related info is requested, return: Gifter ID, Gifter Full Name (FirstName + MiddleName + LastName), Email, Address.
 
-# SEARCH QUERIES – COMMON FIELDS
-Always return the following fields in search results, even if not requested:
+# SEARCH QUERIES – OUTPUT REQUIREMENTS & COMMON FIELDS
+Always include the following common fields in all search and aggregation results: until including these wont be able to form the PostgreSQL query.
 - Subscription ID, Subscription Number, Subscription Status
 - Customer ID, Customer Name (FirstName + MiddleName + LastName)
 - Plan ID, Plan Name, IsGifted
 
-# RELATIONSHIPS
-- tblPlanSubscription.CustomerID → gsCustomers.gsCustomersID
-- tblPlanSubscription.PlanID → tblPlan.PlanID
-- tblPlanSubscriptionCancel.SubscriptionId → tblPlanSubscription.SubscriptionId
-- tblPlanSubscriptionGift.SubscriptionId → tblPlanSubscription.SubscriptionId
-- tblPlanSubscriptionGift.GiftedBy → gsCustomers.gsCustomersID
+# DATE FIELDS FORMATTING AND RULES
+- When the prompt includes time-based grouping (e.g., "month-wise", "year-wise") but does not specify a particular date column, assume grouping is based on StartDate.
+- For monthly data, display month names (e.g., "January", "February") instead of numeric values like "1" or "2".
+- For yearly data, display the 4-digit year (e.g., "2024").
+
+# LABEL FORMATTING
+- Avoid camelCase or PascalCase in final output — prefer natural language & human readable labels.

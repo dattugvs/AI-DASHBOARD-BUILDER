@@ -111,6 +111,10 @@ module.exports = {
     {
       "columnName": "EndAction",
       "dataType": "INT"
+    },
+    {
+      "columnName": "TotalTermAmount",
+      "dataType": "NUMERIC(10,2)"
     }
   ],
   "tblPlanSubscriptionBillingTerm": [
@@ -199,6 +203,24 @@ module.exports = {
     {
       "columnName": "GiftedBy",
       "dataType": "INT"
+    }
+  ],
+  "tblPlanSubscriptionBillingTermPayment": [
+    {
+      "columnName": "SubscriptionID",
+      "dataType": "INT"
+    },
+    {
+      "columnName": "BillingTermID",
+      "dataType": "INT"
+    },
+    {
+      "columnName": "PaymentID",
+      "dataType": "INT"
+    },
+    {
+      "columnName": "Amount",
+      "dataType": "NUMERIC(10,2)"
     }
   ]
 }

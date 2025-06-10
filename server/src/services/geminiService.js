@@ -2,7 +2,7 @@ const { loadContext } = require('./contextService');
 const { GEMINI_API_KEY, GEMINI_MODEL } = require('../config/gemini');
 const axios = require('axios');
 
-async function generateSQLFromPrompt(prompt, mandatoryFields = []) {
+async function generateSQLFromPrompt(prompt, mandatoryFields = [], previousQueryAndError = null) {
 
   const preparePrompt = (context, userPrompt, fields = []) => {
     const basePrompt = `You are a PostgreSQL expert. Use the following schema and rules to generate an SQL query.\n\n${context}`;

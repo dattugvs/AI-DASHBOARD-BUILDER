@@ -33,6 +33,7 @@ async function runQuery(text, params = []) {
   const pool = await poolPromise();
   const client = await pool.connect();
   try {
+    // console.log('Running query:', text, params);
     const result = await client.query(text, params);
     return { data: result.rows };
   } catch (err) {
