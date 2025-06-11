@@ -7,11 +7,11 @@ router.post('/search', async (req, res) => {
         prompt,
         execute = true,
         mandatoryFields = [],
-        showVisualSuggestions = true
+        showVisualSuggestions = false
     } = req.body;
 
     try {
-        const { sql, explanation, visualSuggestions } = await generateSQLFromPrompt(prompt, mandatoryFields, showVisualSuggestions);
+        const { sql, explanation, visualSuggestions } = await generateSQLFromPrompt(prompt, mandatoryFields, false);
 
         if (execute) {
             const { data } = await runQuery(sql);
