@@ -75,6 +75,7 @@ Always include the following common fields in all search and aggregation results
 - Plan ID, Plan Name, IsGifted
 For amount & revenue related queries, include fields in the results that are used in the calculations.
 If specific fields are mentioned to be fetched, make sure that along with them, include the common fields that are mandatory.
+
 # DATE FIELDS FORMATTING AND RULES
 - When the prompt includes time-based grouping (e.g., "month-wise", "year-wise") but does not specify a particular date column, assume grouping is based on StartDate.
 - For monthly data, display month names (e.g., "January", "February") instead of numeric values like "1" or "2".

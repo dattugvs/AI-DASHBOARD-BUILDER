@@ -7,23 +7,21 @@ router.post('/search', async (req, res) => {
         prompt,
         execute = true,
         mandatoryFields = [],
-        pageNumber = 1,
-        pageSize = 50,
+        showVisualSuggestions = true
     } = req.body;
 
     try {
-        const { sql, explanation } = await generateSQLFromPrompt(prompt, mandatoryFields);
+        const { sql, explanation, visualSuggestions } = await generateSQLFromPrompt(prompt, mandatoryFields, showVisualSuggestions);
 
         if (execute) {
-            const { data, total } = await runQuery(sql);
+            const { data } = await runQuery(sql);
 
             res.json({
                 sql,
                 explanation,
+                visualSuggestions,
                 content: {
-                    total: total ? total : data.length,
-                    pageNumber,
-                    pageSize,
+                    total: data.length,
                     results: data,
                 },
             });
@@ -31,7 +29,11 @@ router.post('/search', async (req, res) => {
             res.json({
                 sql,
                 explanation,
-                content: {},
+                visualSuggestions,
+                content: {
+                    total: 0,
+                    results: [],
+                },
             });
         }
     } catch (err) {
